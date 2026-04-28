@@ -103,3 +103,178 @@ Any deviation (high reconstruction error) is flagged as an anomaly.
 ---
 
 ## Repository Structure
+TEPGuard/
+│
+├── artifacts/
+├── AWS/
+├── docs/
+├── sample_data/
+├── src/
+├── Notebooks/
+├── Dockerfile
+├── Dockerfile.ollama
+├── requirements.txt
+├── .gitignore
+└── README.md
+---
+
+## Artifacts Folder
+
+The `artifacts/` folder contains all required model components for inference:
+
+### Included
+
+- `feature_columns.pkl` → list of model input features
+- `scaler.pkl` → fitted scaler used during training
+- `config.json` → model parameters (sequence length, threshold, etc.)
+- `variable_stats.json` → statistics for attribution
+
+### Not Included
+
+- Large model files (`.keras`, `.h5`) are excluded from GitHub
+- Raw training data is excluded
+
+These can be regenerated using the training notebook.
+
+---
+
+## Source Code (src/)
+
+### `preprocess.py`
+- Handles raw TEP data formatting
+- Cleans and prepares data for downstream processing
+
+---
+
+### `create_mixed_stream.py`
+- Simulates real plant behavior
+- Combines normal + faulty data into a continuous stream
+
+---
+
+### `create_batches.py`
+- Converts stream into small CSV batches
+- Mimics real-time ingestion (like IP.21 / DCS)
+
+---
+
+### `inference.py`
+- Core anomaly detection logic
+- Loads trained model + scaler
+- Creates sequences
+- Calculates reconstruction error
+- Flags anomalies
+
+---
+
+### `attribution.py`
+- Identifies which variables contributed most to anomaly
+- Outputs top contributing tags
+
+---
+
+### `llm_review.py`
+- Sends anomaly + variables to Ollama (Mistral)
+- Generates:
+  - classification
+  - affected area
+  - reasoning
+  - recommended action
+  - confidence
+
+---
+
+### `pipeline_aws.py`
+- End-to-end orchestration script
+- Downloads batch from S3
+- Runs inference + LLM review
+- Uploads results back to S3
+
+---
+
+### `dashboard.py`
+- Streamlit dashboard
+- Displays:
+  - anomaly table
+  - top contributing tags
+  - LLM insights
+  - process flow diagram (PFD)
+
+---
+
+## AWS Layer
+
+### `AWS/lambda_trigger.py`
+
+- Triggered on new S3 batch upload
+- Starts ECS task for processing
+
+---
+
+## Docker
+
+### `Dockerfile`
+- Builds container for inference pipeline
+
+### `Dockerfile.ollama`
+- Builds container for Ollama + Mistral model
+
+---
+
+## Sample Data
+
+The `sample_data/` folder contains:
+- Example batch files
+- Example outputs
+
+Used for testing without full dataset
+
+---
+
+## How to Run Locally
+
+### 1. Install dependencies
+pip install -r requirements.txt
+
+---
+
+### 2. Generate batches
+python src/create_mixed_stream.py
+python src/create_batches.py
+
+---
+
+### 3. Run pipeline locally
+python src/pipeline_aws.py
+
+---
+
+### 4. Launch dashboard
+streamlit run src/dashboard.py
+
+---
+
+## Key Highlights
+
+- Simulates real industrial data ingestion (IP.21 / DCS)
+- Uses LSTM Autoencoder for anomaly detection
+- Identifies top contributing variables
+- Uses LLM (Mistral via Ollama) for explainability
+- Fully AWS-integrated architecture (S3 + Lambda + ECS)
+- Interactive Streamlit dashboard
+
+---
+
+## Future Improvements
+
+- Real-time streaming via Kafka
+- Integration with actual historian APIs
+- Model retraining pipelines
+- Alerting system (email/Slack)
+- Advanced root cause graphs
+
+---
+
+## Author
+
+Sourabh Rakesh Shinde
