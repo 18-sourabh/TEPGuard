@@ -102,22 +102,6 @@ Any deviation (high reconstruction error) is flagged as an anomaly.
 
 ---
 
-## Repository Structure
-TEPGuard/
-│
-├── artifacts/
-├── AWS/
-├── docs/
-├── sample_data/
-├── src/
-├── Notebooks/
-├── Dockerfile
-├── Dockerfile.ollama
-├── requirements.txt
-├── .gitignore
-└── README.md
----
-
 ## Artifacts Folder
 
 The `artifacts/` folder contains all required model components for inference:
@@ -267,7 +251,6 @@ streamlit run src/dashboard.py
 
 ## Future Improvements
 
-- Real-time streaming via Kafka
 - Integration with actual historian APIs
 - Model retraining pipelines
 - Alerting system (email/Slack)
