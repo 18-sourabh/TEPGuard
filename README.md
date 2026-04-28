@@ -27,7 +27,7 @@ This project replicates that entire pipeline end-to-end using:
 
 ## Architecture Overview
 
-![Architecture](docs/architecture.png)
+![Architecture](docs/process_PFD.png)
 
 The architecture follows a cloud-ready anomaly detection pattern:
 
