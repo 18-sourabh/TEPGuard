@@ -128,19 +128,16 @@ These can be regenerated using the training notebook.
 - Handles raw TEP data formatting
 - Cleans and prepares data for downstream processing
 
----
 
 ### `create_mixed_stream.py`
 - Simulates real plant behavior
 - Combines normal + faulty data into a continuous stream
 
----
 
 ### `create_batches.py`
 - Converts stream into small CSV batches
 - Mimics real-time ingestion (like IP.21 / DCS)
 
----
 
 ### `inference.py`
 - Core anomaly detection logic
@@ -149,13 +146,11 @@ These can be regenerated using the training notebook.
 - Calculates reconstruction error
 - Flags anomalies
 
----
 
 ### `attribution.py`
 - Identifies which variables contributed most to anomaly
 - Outputs top contributing tags
 
----
 
 ### `llm_review.py`
 - Sends anomaly + variables to Ollama (Mistral)
@@ -166,7 +161,6 @@ These can be regenerated using the training notebook.
   - recommended action
   - confidence
 
----
 
 ### `pipeline_aws.py`
 - End-to-end orchestration script
@@ -174,7 +168,6 @@ These can be regenerated using the training notebook.
 - Runs inference + LLM review
 - Uploads results back to S3
 
----
 
 ### `dashboard.py`
 - Streamlit dashboard
@@ -209,34 +202,11 @@ These can be regenerated using the training notebook.
 
 The `sample_data/` folder contains:
 - Example batch files
-- Example outputs
 
 Used for testing without full dataset
 
 ---
 
-## How to Run Locally
-
-### 1. Install dependencies
-pip install -r requirements.txt
-
----
-
-### 2. Generate batches
-python src/create_mixed_stream.py
-python src/create_batches.py
-
----
-
-### 3. Run pipeline locally
-python src/pipeline_aws.py
-
----
-
-### 4. Launch dashboard
-streamlit run src/dashboard.py
-
----
 
 ## Key Highlights
 
