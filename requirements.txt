@@ -1,0 +1,10 @@
+joblib==1.5.3
+numpy==2.4.4
+pandas==3.0.2
+pyreadr==0.5.6
+python-dateutil==2.9.0.post0
+six==1.17.0
+scikit-learn
+tensorflow
+boto3
+requests

@@ -1,0 +1,7 @@
+FROM ollama/ollama:latest
+
+RUN ollama serve & sleep 15 && ollama pull mistral
+
+EXPOSE 11434
+
+CMD ["serve"]

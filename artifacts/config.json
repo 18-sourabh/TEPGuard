@@ -1,0 +1,8 @@
+{
+    "seq_length": 20,
+    "threshold": 0.8777842292420476,
+    "batch_size": 16,
+    "n_features": 156,
+    "timesteps": 20,
+    "model_type": "LSTM Autoencoder"
+}
