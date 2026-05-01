@@ -1,6 +1,8 @@
 # TEPGuard: Real-Time Industrial Anomaly Detection with LLM Root Cause Analysis
 
-TEPGuard is an end-to-end industrial anomaly detection system built on the Tennessee Eastman Process (TEP) dataset. The project simulates how real-world chemical plants monitor process variables, detect anomalies, and generate actionable insights for operators.
+TEPGuard is an end-to-end industrial anomaly detection system built on the Tennessee Eastman Process (TEP) dataset. The project simulates how real-world chemical plants monitor process variables, detect anomalies, and generate actionable insights for operators. The process is showon in the PFD below: 
+
+![Architecture](docs/process_PFD.jpeg) 
 
 The system mimics a production-grade workflow where process historian data (e.g., Aspen IP.21, DCS) arrives in small time-based batches, is processed through an ML pipeline, and enriched with LLM-based root cause explanations.
 
@@ -27,7 +29,7 @@ This project replicates that entire pipeline end-to-end using:
 
 ## Architecture Overview
 
-![Architecture](docs/process_PFD.jpeg)
+![Architecture](docs/architecture.jpeg)
 
 The architecture follows a cloud-ready anomaly detection pattern:
 
