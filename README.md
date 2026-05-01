@@ -29,7 +29,7 @@ This project replicates that entire pipeline end-to-end using:
 
 ## Architecture Overview
 
-![Architecture](docs/Architecture.jpeg)
+![Architecture](docs/Architecture.png)
 
 The architecture follows a cloud-ready anomaly detection pattern:
 
