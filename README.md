@@ -232,5 +232,6 @@ Used for testing without full dataset
 
 ## Author
 
-Sourabh Rakesh Shinde
+Sourabh Shinde
+
 GitHub: https://github.com/18-sourabh
